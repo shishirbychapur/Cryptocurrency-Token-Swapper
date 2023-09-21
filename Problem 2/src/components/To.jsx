@@ -1,4 +1,5 @@
 import React from "react";
+import Tokens from "./Tokens";
 
 export default function To() {
   
@@ -17,7 +18,8 @@ export default function To() {
           <p>${toAmount}</p>
         </div>
         <div className="flex flex-col w-1/3">
-          <input className="h-10" type="text" value={toToken} onChange={changeToken}/>
+          {/* <input className="h-10" type="text" value={toToken} onChange={changeToken}/> */}
+          <Tokens />
         </div>
       </div>
     </div>
