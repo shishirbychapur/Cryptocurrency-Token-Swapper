@@ -1,4 +1,3 @@
-import { Button, useDisclosure } from "@chakra-ui/react"
 import {
   Input,
   InputGroup,
@@ -10,20 +9,22 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  useDisclosure
 } from '@chakra-ui/react'
 
+import { Button } from "@chakra-ui/react"
+import Common from './search/common';
+import List from './search/List';
 import React from "react";
 
-export default function Tokens() {
-
-  const { isOpen, onOpen, onClose } = useDisclosure()
+export default function Tokens({ tokens }) {
 
   const [token, setToken] = React.useState("Ethereum");
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Button onClick={onOpen}>{token}</Button>
-
+      <Button onClick={onOpen}>{tokens}</Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -34,9 +35,9 @@ export default function Tokens() {
               <InputLeftAddon children='🔍' />
               <Input type='tel' placeholder='Search for the name of the token' />
             </InputGroup>
-            <Button>Ethereum</Button>
-            <Button>Bitcoin</Button>
-            <Button>Litecoin</Button>
+            <Common />
+            <hr />
+            <List />
           </ModalBody>
         </ModalContent>
       </Modal>
