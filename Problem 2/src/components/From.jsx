@@ -1,28 +1,25 @@
 import { Card, Input } from "@chakra-ui/react";
 
 import React from "react";
+import { SelectedContext } from "../context/SelectedContext";
 import Tokens from "./Tokens";
 
 export default function From() {
 
-  const [fromToken, setFromToken] = React.useState("Select Token");
-  const [fromAmount, setFromAmount] = React.useState("");
-  const [toggle, setToggle] = React.useState(false);
+  const { data, setData } = React.useContext(SelectedContext);
 
-  const changeToken = e => setFromToken(e.target.value);
-  const changeAmount = e => setFromAmount(e.target.value);
-  const toggleTokens = () => setToggle(!toggle);
+  const changeAmount = event => setData({...data, fromAmount: event.target.value});
 
   return (
-    <Card className="rounded-xl self-center m-1 bg-gray-500 flex flex-col justify-evenly text-left p-2" size="lg">
+    <Card className="rounded-xl self-center m-1 bg-gray-500 flex flex-col justify-evenly text-left p-2" size="lg" backgroundColor="#378ca1" color="white">
       <label>You pay</label>
       <div className="flex justify-between">
         <div className="flex flex-col w-1/2">
-          <Input variant="filled" placeholder="0" onChange={changeAmount} />
-          <p>${fromAmount}</p>
+          <Input placeholder="0" onChange={changeAmount} />
+          <p>${data.fromAmount}</p>
         </div>
         <div className="flex flex-col w-1/3">
-          <Tokens tokens={fromToken} />
+          <Tokens tokens={data.fromToken} type="from" />
         </div>
       </div>
     </Card>
