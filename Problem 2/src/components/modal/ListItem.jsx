@@ -1,16 +1,9 @@
 import React from "react";
-import { SelectedContext } from "../../context/SelectedContext";
 
-export default function ListItem({ token, type, close }) {
-
-  const { data, setData } = React.useContext(SelectedContext);
+export default function ListItem({ token, setToken, close }) {
 
   const handleSelect = () => {
-    if (type == "from") {
-      setData({...data, fromToken: token.currency, fromSVG: `https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/${token.currency}.svg`, search: ""});
-    } else {
-      setData({...data, toToken: token.currency, toSVG: `https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/${token.currency}.svg`, search: ""});
-    }
+    setToken({ name: token.currency, svg: `https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/${token.currency}.svg` });
     close();
   }
 

@@ -12,38 +12,39 @@ import Common from './modal/common';
 import List from './modal/List';
 import React from "react";
 import Search from './modal/Search';
-import { SelectedContext } from "../context/SelectedContext";
 
-export default function Tokens({ tokens, type }) {
+export default function Tokens({ tokens, type, setTokens }) {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { data, setData } = React.useContext(SelectedContext);
+  const [search, setSearch] = React.useState("");
 
   const fromSVG = 
-  <div className="flex flex-row justify-between w-full">
-    <img src={data.fromSVG} />
-    <p>{data.fromToken}</p>
+  <div className="flex flex-row justify-evenly w-full">
+    <img src={tokens.svg} />
+    <p>{tokens.name}</p>
   </div>;
 
   const toSVG = 
-  <div className="flex flex-row justify-between w-full">
-    <img src={data.toSVG} />
-    <p>{data.toToken}</p>
+  <div className="flex flex-row justify-evenly w-full">
+    <img src={tokens.svg} />
+    <p>{tokens.name}</p>
   </div>;
 
   return (
     <>
-      <div className="bg-blue-500 rounded-lg p-2 cursor-pointer"onClick={onOpen}>{type == "from" ? fromSVG : toSVG }</div>
+      <div className="lg:ml-1 h-12 w-32 lg:h-12 py-2 bg-yellow-500 rounded-lg lg:p-2 cursor-pointer lg:text-md text-white font-bold w-1/4" onClick={onOpen}>
+        {type == "from" ? fromSVG : toSVG }
+      </div>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Select a Token!</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Search />
-            <Common type={type} close={onClose} />
+            <Search word={search} setWord={setSearch} />
+            <Common setToken={setTokens} close={onClose} />
             <hr />
-            <List type={type} close={onClose} filter={data.search} />
+            <List close={onClose} keyword={search} setToken={setTokens} />
           </ModalBody>
         </ModalContent>
       </Modal>

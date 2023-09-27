@@ -1,16 +1,10 @@
 import React from "react";
-import { SelectedContext } from "../../context/SelectedContext";
 
-export default function CommonItem({ token, type, close }) {
-  
-  const { data, setData } = React.useContext(SelectedContext);
+export default function CommonItem({ token, close, setToken }) {
 
   const handleSelect = () => {
-    if (type == "from") {
-      setData({...data, fromToken: token, fromSVG: `https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/${token}.svg`, search: ""});
-    } else {
-      setData({...data, toToken: token, toSVG: `https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/${token}.svg`, search: ""});
-    }
+    // const result = Calculate(data);
+    setToken({ name: token, svg: `https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/${token}.svg` });
     close();
   }
   
