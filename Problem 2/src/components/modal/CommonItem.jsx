@@ -3,7 +3,6 @@ import React from "react";
 export default function CommonItem({ token, close, setToken }) {
 
   const handleSelect = () => {
-    // const result = Calculate(data);
     setToken({ name: token, svg: `https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/${token}.svg` });
     close();
   }

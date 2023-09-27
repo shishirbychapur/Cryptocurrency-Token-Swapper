@@ -8,7 +8,7 @@ import {
   useDisclosure
 } from '@chakra-ui/react'
 
-import Common from './modal/common';
+import Common from './modal/Common';
 import List from './modal/List';
 import React from "react";
 import Search from './modal/Search';
