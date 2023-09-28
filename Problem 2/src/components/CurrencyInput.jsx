@@ -1,8 +1,6 @@
-import { Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
-import { getPrice, getUSD } from "../util/Calculator";
-
 import React from "react";
 import Tokens from "./Tokens";
+import { getUSD } from "../util/Calculator";
 
 export default function CurrencyInput({ amount, token, type, setAmount, setToken }) {
   return (
@@ -14,13 +12,9 @@ export default function CurrencyInput({ amount, token, type, setAmount, setToken
         <input className="ml-2 text-4xl font-semibold text-white bg-zinc-600 focus:outline-none w-9/12 lg:w-3/4" value={amount} onChange={setAmount} autoFocus={type == "from"} />
         <Tokens tokens={token} type={type} setTokens={setToken} />
       </div>
-      {
-        type === "from"
-        ? <p className="font-semibold text-lg text-gray-400 ml-3">≈${getPrice(token.name, amount)}</p>
-        : <p className="font-semibold text-lg text-gray-400 ml-3">
-          {(token.name == "Select Token" ? "Please select a token to begin!" : "1 " + token.name + " = $" + getUSD(token.name))}
+        <p className="font-semibold text-lg text-gray-400 ml-3">
+          {token.name === "Select Token" ? "Please select a token to begin!" : "1 " + token.name + " = $" + getUSD(token.name)}
         </p>
-      }
   </div>
   )
 }

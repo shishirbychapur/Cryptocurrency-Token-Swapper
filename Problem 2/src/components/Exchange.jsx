@@ -3,7 +3,7 @@ import React from "react";
 import { computeExchangeRate } from "../util/Calculator";
 import swap from "../assets/swap.svg";
 
-export default function Exchange() {
+export default function Exchange({ setAlertMessage }) {
 
   const [fromAmount, setFromAmount] = React.useState("");
   const [toAmount, setToAmount] = React.useState("");

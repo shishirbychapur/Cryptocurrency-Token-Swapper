@@ -6,7 +6,7 @@ export const computeExchangeRate = (fromToken, toToken, fromAmount) => {
   }
 
   const fromPrice = getPrice(fromToken, fromAmount);
-  const toPrice = getPrice(toToken, undefined);
+  const toPrice = getUSD(toToken);
 
   if (toPrice === 0) {
     return 0;
