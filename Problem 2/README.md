@@ -1,1 +1,1 @@
-Project Deployed at: [https://switcheo-fe-assessment.vercel.app/](https://coin-swapper.vercel.app/)
+[Project Deployed here](https://coin-swapper.vercel.app/)
